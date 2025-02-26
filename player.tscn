@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://be7bh4lwb5m4v"]
+
+[ext_resource type="Texture2D" uid="uid://rowdjw703pky" path="res://res/assets/player_00.png" id="1_gkiyr"]
+[ext_resource type="Script" path="res://player.gd" id="1_jlkvn"]
+[ext_resource type="Texture2D" uid="uid://cm6dlwu0gkl4k" path="res://res/assets/player_01.png" id="2_6k2pf"]
+[ext_resource type="Texture2D" uid="uid://bywcmyrx8pve4" path="res://res/assets/player_02.png" id="3_wkosg"]
+[ext_resource type="Texture2D" uid="uid://b122xi5mx4sle" path="res://res/assets/player_03.png" id="4_hx4qs"]
+[ext_resource type="AudioStream" uid="uid://cph6dg8ri15xq" path="res://res/assets/jump.wav" id="6_g5j1n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t6xbt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gkiyr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6k2pf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wkosg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hx4qs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q5gip"]
+radius = 19.0
+height = 98.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_jlkvn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_t6xbt")
+frame = 1
+frame_progress = 0.247838
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_q5gip")
+
+[node name="SoundJump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_g5j1n")
